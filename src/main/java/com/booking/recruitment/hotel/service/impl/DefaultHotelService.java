@@ -4,6 +4,7 @@ import com.booking.recruitment.hotel.exception.BadRequestException;
 import com.booking.recruitment.hotel.model.Hotel;
 import com.booking.recruitment.hotel.repository.HotelRepository;
 import com.booking.recruitment.hotel.service.HotelService;
+import com.sun.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,12 @@ class DefaultHotelService implements HotelService {
     }
 
     return hotelRepository.save(hotel);
+  }
+
+  @Override
+  public Hotel findById(Integer id) {
+    return (Hotel) hotelRepository.findAll().stream()
+            .filter((hotel) -> id.equals(hotel.getId()))
+            .collect(Collectors.toList());
   }
 }

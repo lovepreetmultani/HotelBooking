@@ -4,6 +4,7 @@ import com.booking.recruitment.hotel.model.Hotel;
 import com.booking.recruitment.hotel.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,4 +30,12 @@ public class HotelController {
   public Hotel createHotel(@RequestBody Hotel hotel) {
     return hotelService.createNewHotel(hotel);
   }
+
+  @GetMapping("/hotel/{id}")
+  @ResponseStatus(HttpStatus.CREATED)
+  public Hotel getHotelByID(@PathVariable Integer id){
+    return hotelService.findById(id);
+  }
 }
+
+
