@@ -1,1 +1,1 @@
-# HotelBooking-springBoot
+# HotelBooking-Springboot
